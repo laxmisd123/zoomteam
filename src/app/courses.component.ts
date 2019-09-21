@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
-import { CoursesService } from './courses.service';
 
 @Component({
 // tslint:disable-next-line: component-selector
 selector: 'courses',
-template: '<h2>{{title}}</h2><ul><li *ngFor="let course of courses">{{course}}</li></ul>'
-
+template:'<div (click)="onSaveClicked()"><button (click)="onSave($event)">Save</button></div>'
  })
  export class CoursesComponent {
-    title ='list of courses';
-    courses ;
-    constructor(service:CoursesService){
-      this.courses=service.getCourses();
-    }
-
-}
+   onSave($event){
+     $event.stopPrapogation();
+     console.log("button was clicked",$event  );
+   }
+   onSaveClicked($event){
+     console.log("div was clicked");
+   }
+ }
